@@ -1,4 +1,4 @@
-# presentazione project
+# presentazionebe project
 
 This project uses Quarkus, the Supersonic Subatomic Java Framework.
 
@@ -9,7 +9,7 @@ If you want to learn more about Quarkus, please visit its website: https://quark
 You can run your application in dev mode that enables live coding using:
 
 ```shell script
-./gradlew quarkusDev
+./mvnw compile quarkus:dev
 ```
 
 ## Packaging and running the application
@@ -17,52 +17,38 @@ You can run your application in dev mode that enables live coding using:
 The application can be packaged using:
 
 ```shell script
-./gradlew build
+./mvnw package
 ```
 
-It produces the `presentazione-0.1-runner.jar` file in the `/build` directory. Be aware that it’s not an _über-jar_ as
-the dependencies are copied into the `build/lib` directory.
+It produces the `presentazionebe-0.1-runner.jar` file in the `/target` directory. Be aware that it’s not an _über-jar_
+as the dependencies are copied into the `target/lib` directory.
 
 If you want to build an _über-jar_, execute the following command:
 
 ```shell script
-./gradlew build -Dquarkus.package.type=uber-jar
+./mvnw package -Dquarkus.package.type=uber-jar
 ```
 
-The application is now runnable using `java -jar build/presentazione-0.1-runner.jar`.
+The application is now runnable using `java -jar target/presentazionebe-0.1-runner.jar`.
 
 ## Creating a native executable
 
 You can create a native executable using:
 
 ```shell script
-./gradlew build -Dquarkus.package.type=native
+./mvnw package -Pnative
 ```
 
 Or, if you don't have GraalVM installed, you can run the native executable build in a container using:
 
 ```shell script
-./gradlew build -Dquarkus.package.type=native -Dquarkus.native.container-build=true
+./mvnw package -Pnative -Dquarkus.native.container-build=true
 ```
 
-You can then execute your native executable with: `./build/presentazione-0.1-runner`
+You can then execute your native executable with: `./target/presentazionebe-0.1-runner`
 
-If you want to learn more about building native executables, please consult https://quarkus.io/guides/gradle-tooling.
-
-# Config example
-
-<p>This example displays mach speed in your favourite unit, depending on the specified Quarkus configuration.</p>
-<p>The Quarkus configuration is located in: <code>src/main/resources/application.yml</code></p>
-<p><b>Supersonic!</b></p>
-Guide: https://quarkus.io/guides/config#yaml
-
-# Logging JSON
-
-<p>This example let you go faster with your jet aircraft, your speed is logged when you send a new request.</p>
-<p>When you reach the speed of sound, a "Sonic Boom" error is going to be thrown and logged.</p>
-<p><b>Boom!</b></p>
-
-Guide: https://quarkus.io/guides/logging#json-logging
+If you want to learn more about building native executables, please consult https://quarkus.io/guides/maven-tooling.html
+.
 
 # RESTEasy JAX-RS
 
